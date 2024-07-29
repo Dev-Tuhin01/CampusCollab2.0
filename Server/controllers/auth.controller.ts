@@ -1,18 +1,56 @@
 import {Request,Response} from "express";
 import bcrypt from "bcryptjs"
 
+import generateTokenAndSetCookie from "../utils/generateToken";
 import { Teacher, Student } from "../models/user.model";
-import { error } from "console";
 
-export const studLogin = (req:Request,res:Response)=>{
-  res.send("Login Route");
- console.log("Login Route accessed");
+export const studLogin = async (req:Request,res:Response)=>{
+  try {
+    const {rollNo, password} = req.body;
+    const student = await Student.findOne({rollNo});
+    const isValidPassword = await bcrypt.compare(password, student?.password || "");
+
+    if(!student || !isValidPassword){
+      return res.status(400).json({error: "Invalid roll number or password"});
+    }
+
+    generateTokenAndSetCookie(student._id, res);
+
+    res.status(200).json({
+      _id : student._id,
+      studentName: student.studentName,
+      profilePic: student.profilePic,
+    });
+
+  } catch (error){
+    console.error("Error in login control",(error as Error).message);
+    res.status(500).json({error:"Something is cooked in our machines! Don't worry"});
+  }
 }
 
 
-export const teacherLogin = (req:Request,res:Response)=>{
-  res.send("Login Route");
- console.log("Login Route accessed");
+export const teacherLogin = async (req:Request,res:Response)=>{
+  try {
+    const {teacherID, password} = req.body;
+    const teacher= await Teacher.findOne({teacherID});
+    const isValidPassword = await bcrypt.compare(password, teacher?.password || "");
+
+    if(!teacher || !isValidPassword){
+      return res.status(400).json({error: "Invalid teacher ID or password"});
+    }
+
+    generateTokenAndSetCookie(teacher._id, res);
+
+    res.status(200).json({
+      _id : teacher._id,
+      studentName: teacher.teacherName,
+      profilePic: teacher.profilePic,
+    });
+
+  } catch (error){
+    console.error("Error in login control",(error as Error).message);
+    res.status(500).json({error:"Something is cooked in our machines! Don't worry"});
+  }
 }
 
 
@@ -29,13 +67,13 @@ export const studSignup = async (req:Request,res:Response)=>{
       gender} = req.body;
 
     
-    const student = await Student.findOne({studentName});
+    const student = await Student.findOne({rollNo});
 
     if(student){
       return res.status(400).json({error:"Looks Like You are Already admitted"});
     }
 
-    //Pasword hashing
+    //Password hashing
     //generate salt
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password,salt);
@@ -61,7 +99,6 @@ export const studSignup = async (req:Request,res:Response)=>{
 
     
     if (newStudent) {
-      
       await newStudent.save();
       
       res.status(201).json({
@@ -96,14 +133,14 @@ export const teacherSignup = async (req:Request,res:Response)=>{
       gender
     } = req.body;
     
-    const teacher = await Teacher.findOne({teacherName});
+    const teacher = await Teacher.findOne({teacherID});
 
     if(teacher){
-      return res.status(400).json({error:"You can only teach one class at a time proffessor"});
+      return res.status(400).json({error:"You can only teach one class at a time professor"});
     }
 
 
-    //Pasword hashing
+    //Password hashing
     //generate salt
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password,salt);
@@ -139,19 +176,23 @@ export const teacherSignup = async (req:Request,res:Response)=>{
 
 
     } else {
-      
+      res.status(400).json({error:"Oops! Some data you sent is not right"});
     }
 
 
   } catch (error) {
     console.error((error as Error).message);
-
     res.status(500).json({error:"Something is cooked in our machines! Don't worry"});   
    }
 }
 
 
 export const logout= (req:Request,res:Response)=>{
-  res.send("Logout Route");
- console.log("Logout Route accessed");
+  try{
+    res.cookie("jwt", "",{maxAge: 0});
+    res.status(200).json({message:"Logged out successfully"});
+  } catch(error) {
+    console.error((error as Error).message);
+    res.status(500).json({error:"Something is cooked in our machines! Don't worry"});   
+  }
 }
