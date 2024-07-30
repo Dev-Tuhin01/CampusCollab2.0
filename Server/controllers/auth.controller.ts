@@ -14,7 +14,7 @@ export const studLogin = async (req:Request,res:Response)=>{
       return res.status(400).json({error: "Invalid roll number or password"});
     }
 
-    generateTokenAndSetCookie(student._id, res);
+    generateTokenAndSetCookie(student._id,false, res);
 
     res.status(200).json({
       _id : student._id,
@@ -39,7 +39,7 @@ export const teacherLogin = async (req:Request,res:Response)=>{
       return res.status(400).json({error: "Invalid teacher ID or password"});
     }
 
-    generateTokenAndSetCookie(teacher._id, res);
+    generateTokenAndSetCookie(teacher._id,true, res);
 
     res.status(200).json({
       _id : teacher._id,

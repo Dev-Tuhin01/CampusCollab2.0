@@ -40,7 +40,9 @@ const strudentSchema = new mongoose.Schema({
     type:String,
     default:""
   }
-});
+},{
+    timestamps:true
+  });
 
 export const Student = mongoose.model("Student",strudentSchema);
 
