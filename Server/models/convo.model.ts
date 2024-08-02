@@ -1,28 +1,26 @@
 import mongoose , {Schema} from "mongoose";
 
 const conversationSchema:Schema = new mongoose.Schema({
+  convoFor:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'Paper',
+  },
   studentParticipants : [{
     type:mongoose.Schema.Types.ObjectId,
     ref:'Student',
     }],
-  teahcerParticipants : [{
+  teahcerParticipants : {
     type:mongoose.Schema.Types.ObjectId,
     ref:'Teacher',
-  }],
-  studentMessages :[{
+  },
+  Messages :[{
     type:mongoose.Schema.Types.ObjectId,
-    ref:'StudMessage',
+    ref:'Message',
     default: [],
   }],
-  teacherMessages :[{
-    type:mongoose.Schema.Types.ObjectId,
-    ref:'teacherMessage',
-    default: [],
-  }]
-
 }, {timestamps: true});
 
 
-const Convo = mongoose.model("Conversation", conversationSchema);
+const Conversation = mongoose.model("Conversation", conversationSchema);
 
-export default Convo;
+export default Conversation;
