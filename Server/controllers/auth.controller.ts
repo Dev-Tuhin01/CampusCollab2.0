@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs"
 
 import generateTokenAndSetCookie from "../utils/generateToken";
 import { Teacher, Student } from "../models/user.model";
+import generateRollNo from "../utils/generateRollNo";
 
 export const studLogin = async (req:Request,res:Response)=>{
   try {
@@ -63,10 +64,9 @@ export const studSignup = async (req:Request,res:Response)=>{
       subject,
       semester,
       admissionYear,
-      rollNo,
       gender} = req.body;
 
-    
+    const rollNo = await generateRollNo(subject,admissionYear);
     const student = await Student.findOne({rollNo});
 
     if(student){
