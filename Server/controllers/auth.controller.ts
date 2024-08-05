@@ -4,6 +4,7 @@ import bcrypt from "bcryptjs"
 import generateTokenAndSetCookie from "../utils/generateToken";
 import { Teacher, Student } from "../models/user.model";
 import generateRollNo from "../utils/generateRollNo";
+import { error } from "console";
 
 export const studLogin = async (req:Request,res:Response)=>{
   try {
@@ -66,8 +67,19 @@ export const studSignup = async (req:Request,res:Response)=>{
       admissionYear,
       gender} = req.body;
 
-    const rollNo = await generateRollNo(subject,admissionYear);
+    console.log(      studentName,
+      email,
+      password,
+      subject,
+      semester,
+      admissionYear,
+      gender)
+
+    const rollNo = await generateRollNo(subject,admissionYear); // creating a roll no based on subject and admission year
+    if(rollNo.length == 0) return res.status(400).json({error:"Could not generate roll no"})
     const student = await Student.findOne({rollNo});
+
+
 
     if(student){
       return res.status(400).json({error:"Looks Like You are Already admitted"});

@@ -2,6 +2,7 @@
 import express,{Express,Request,Response } from "express";
 import dotenv from "dotenv"
 import bodyParser from "body-parser";
+import cors from "cors";
 
 //importing routes
 import authRoutes from "./routes/auth.routes.ts";
@@ -19,9 +20,12 @@ const timestamp = time.getHours() + ":" + time.getMinutes() + ":" + time.getSeco
 
 
 // Middlewares
-app.use(express.json());            //to parse incoming requsts with JSON payload
+app.use(express.json());            //to parse incoming requests with JSON payload
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(cors({
+
+}))
 
 app.use("/api/auth",authRoutes);
 
@@ -36,5 +40,5 @@ app.get("/",(req:Request,res:Response)=>{
 
 app.listen(port,()=>{
   connectToMongoDB();
-  console.log(`App is running on port:${port} @${timestamp}`);
+  console.log(`App is running on port:${port} started running on ${timestamp}`);
 });

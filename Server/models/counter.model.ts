@@ -2,11 +2,11 @@ import mongoose from "mongoose";
 
 const studCounterSchema = new mongoose.Schema({
   subject:String,
-  admisionYear:String,
+  admissionYear:String,
   count:Number
 });
 
-export const studCounter = mongoose.model("StudCounter",studCounterSchema);
+export const StudCounter = mongoose.model("StudCounter",studCounterSchema);
 
 const teacherCounterSchema = new mongoose.Schema({
   subject:String,
@@ -14,4 +14,4 @@ const teacherCounterSchema = new mongoose.Schema({
   count:Number
 });
 
-export const teacherCounter = mongoose.model("TeacherCounter",teacherCounterSchema);
+export const TeacherCounter = mongoose.model("TeacherCounter",teacherCounterSchema);
