@@ -76,6 +76,7 @@ export const studSignup = async (req:Request,res:Response)=>{
       gender)
 
     const rollNo = await generateRollNo(subject,admissionYear); // creating a roll no based on subject and admission year
+    console.log(rollNo)
     if(rollNo.length == 0) return res.status(400).json({error:"Could not generate roll no"})
     const student = await Student.findOne({rollNo});
 

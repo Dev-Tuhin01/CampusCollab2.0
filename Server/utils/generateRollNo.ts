@@ -23,6 +23,7 @@ const generateRollNo = async (subject:String, admissionYear:String) =>{
   const counter = await StudCounter.findOne({subject,admissionYear});
   if(counter){
     count = counter?.count! + 1;
+    counter.updateOne({subject,admissionYear},{count});
   } else{
     const c = new StudCounter({subject,admissionYear,count})
     c.save()
