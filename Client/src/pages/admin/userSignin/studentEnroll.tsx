@@ -11,6 +11,7 @@ const StudentEnroll = () => {
     password: '',
     subject: '',
     semester:'',
+    rollNo:'',
     admissionYear:'',
     gender:''
   });
@@ -132,6 +133,12 @@ const StudentEnroll = () => {
           <input type="text" placeholder="2024..." className="input input-bordered" value={data.admissionYear} onChange={(e)=>{setData({...data,admissionYear:e.target.value})}}/>
         </label>
         <div>
+        <label className="form-control ">
+          <div className="label">
+            <span className="label-text text-secondary">Enter Student's Roll no.</span>
+          </div>
+          <input type="text" placeholder="BCA2100001" className="input input-bordered " value={data.rollNo} onChange={(e)=>{setData({...data,rollNo:e.target.value})}} />
+        </label>
           <label className="form-control w-1/12">
             <div className="label">
               <span className="label-text text-secondary">Gender</span>

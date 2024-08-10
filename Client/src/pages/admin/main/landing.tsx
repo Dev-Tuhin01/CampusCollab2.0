@@ -11,7 +11,7 @@ const Landing= () =>{
     <section className="divider divider-neutral"></section>
     <nav className="grid grid-cols-2 gap-4 h-fit w-full justify-items-center grid-rows-2">
         <div className="w-11/12 mx-96 h-24 text-white flex items-center justify-center text-xl bg-secondary text-black rounded"> <Link to={"studentEnrollment"}>Student Enrollment</Link> </div>
-        <div className="w-11/12 mx-96 h-24 text-white flex items-center justify-center text-xl bg-error rounded"> Teacher Enrollment</div>
+        <div className="w-11/12 mx-96 h-24 text-white flex items-center justify-center text-xl bg-error rounded"><Link to={"teacherEnrollment"}> Teacher Enrollment</Link></div>
         <div className="w-11/12 mx-96 h-24 text-white flex items-center justify-center text-xl bg-neutral rounded"> Publish Notice</div>
         <div className="w-11/12 mx-96 h-24 text-white flex items-center justify-center text-xl bg-accent text-black rounded"> Add Paper </div>
     </nav>
