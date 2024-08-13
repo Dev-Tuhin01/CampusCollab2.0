@@ -30,11 +30,15 @@ const useSignup = () => {
 
       const data = await res.json()
       console.log(data)
+
+      if(data.error){
+        throw new Error(data.error);
+      }
       
     } catch(error) {
-      toast.error((error as Error).message)
+      toast.error((error as Error).message);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
      
   }

@@ -155,7 +155,7 @@ const StudentEnroll = () => {
         </div>
         <div className="divider" />
         <button type="submit" className="btn btn-secondary">Submit</button>
-        <button className="btn btn-neutral">Cancel</button>
+        <button type="reset" className="m-2 btn btn-neutral">Cancel</button>
       </form>
     </div>
   );

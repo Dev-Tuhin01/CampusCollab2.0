@@ -13,7 +13,14 @@ export default {
     require('daisyui'),
   ],
   daisyui:{
-    themes: ["dracula","coffee","business"]
+    themes: ["dracula",
+      "coffee",
+      "business",
+      "retro",
+      "cyberpunk",
+      "valentine",
+      "nord"
+    ]
   },
 }
 

@@ -3,7 +3,7 @@ import './App.css'
 import AdminPanel from './pages/admin/admin'
 import Landing from './pages/admin/main/landing'
 import StudentEnroll from './pages/admin/userSignin/studentEnroll'
-import TeacherEnroll from './pages/admin/teacherSignin/teacherEnrollment'
+import TeacherEnroll from './pages/admin/userSignin//teacherEnrollment'
 import { Toaster } from 'react-hot-toast'
 
 function App() {
