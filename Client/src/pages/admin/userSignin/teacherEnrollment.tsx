@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState } from "react";
+import {useTeachSignup} from "../../../hooks/useSignup"
 
 const TeacherEnroll = ()=>{
 
@@ -11,12 +12,20 @@ const TeacherEnroll = ()=>{
     teacherID:"",
     gender:""
   });
+
+  const {loading , signup} = useTeachSignup()
+
+  const handleSubmit = async (e:SubmitEvent) => {
+    e.preventDefault();
+    console.log("submitting");
+    await signup(data)
+  }
   
   return(
   <div className="flex flex-col items-center m-5">
     <h1 className="md:text-7xl text-4xl text-primary">Teacher Enrolment Form</h1>
     <div className="divider" />
-    <form className="h-full md:w-8/12 w-11/12 border p-4 rounded bg-neutral">
+    <form className="h-full md:w-8/12 w-11/12 border p-4 rounded bg-neutral" onSubmit={handleSubmit}>
       <label className="form-control">
           <div className="label">
             <span className="label-text text-secondary">Enter Teacher's Name</span>
@@ -42,7 +51,7 @@ const TeacherEnroll = ()=>{
           <div className="label">
             <span className="label-text text-secondary">Enter Teacher's Subject</span>
           </div>
-          <select className="select select-bordered w-2/12">
+          <select className="select select-bordered w-2/12" onChange={(e) => {setData({...data,subject:e.target.value})}}>
             <option disabled selected>Name of Subject</option>
             <option value="CIS">CIS</option>
           </select>
@@ -53,6 +62,13 @@ const TeacherEnroll = ()=>{
             <span className="label-text text-secondary">Enter Teacher's Joining Year</span>
           </div>
             <input type="text" placeholder="2002" className="input input-bordered " value={data.joiningYear} onChange={(e)=>{setData({...data,joiningYear:e.target.value})}}/>
+      </label>
+
+      <label className="form-control">
+          <div className="label">
+            <span className="label-text text-secondary">Enter Teacher's ID</span>
+          </div>
+            <input type="text" placeholder="CIS21SK01" className="input input-bordered " value={data.teacherID} onChange={(e)=>{setData({...data,teacherID:e.target.value})}}/>
       </label>
       <label className="form-control w-1/12">
           <div className="label">

@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import useSignup from "../../../hooks/useSignup";
+import {useStudSignup} from "../../../hooks/useSignup";
 
 const StudentEnroll = () => {
   const [selectedCourse, setSelectedCourse] = useState("");
@@ -16,7 +16,7 @@ const StudentEnroll = () => {
     gender:''
   });
 
-  const {loading,signup} = useSignup()
+  const {loading,signup} = useStudSignup()
 
   const semList = ["1st","2nd","3rd","4th","5th","6th"];
 
