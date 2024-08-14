@@ -51,7 +51,7 @@ const TeacherEnroll = ()=>{
           <div className="label">
             <span className="label-text text-secondary">Enter Teacher's Subject</span>
           </div>
-          <select className="select select-bordered w-2/12" onChange={(e) => {setData({...data,subject:e.target.value})}}>
+          <select className="select select-bordered w-5/12" onChange={(e) => {setData({...data,subject:e.target.value})}}>
             <option disabled selected>Name of Subject</option>
             <option value="CIS">CIS</option>
           </select>
@@ -75,11 +75,11 @@ const TeacherEnroll = ()=>{
             <span className="label-text text-secondary">Gender</span>
           </div>
           <label className="label cursor-pointer">
-            <span className="label-text">Male</span>
+            <span className="label-text mx-2">Male</span>
             <input type="radio" name="gender" className="radio checked:bg-secondary" value={"male"} onChange={(e)=>{setData({...data,gender:e.target.value})}} />
           </label>
           <label className="label cursor-pointer">
-            <span className="label-text">Female</span>
+            <span className="label-text mx-2">Female</span>
             <input type="radio" name="gender" className="radio checked:bg-secondary" value={"female"} onChange={(e)=>{setData({...data,gender:e.target.value})}} />
           </label>
       </label>

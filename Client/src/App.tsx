@@ -4,6 +4,7 @@ import AdminPanel from './pages/admin/admin'
 import Landing from './pages/admin/main/landing'
 import StudentEnroll from './pages/admin/userSignin/studentEnroll'
 import TeacherEnroll from './pages/admin/userSignin//teacherEnrollment'
+import PublishNotice from './pages/admin/notice/publishNotice'
 import { Toaster } from 'react-hot-toast'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route index element={<Landing />} />
           <Route path='studentEnrollment' element={<StudentEnroll />}/>
           <Route path='teacherEnrollment' element={<TeacherEnroll />}/>
+          <Route path='publishNotice' element={<PublishNotice />}/>
         </Route>
       </Routes>
     </>
