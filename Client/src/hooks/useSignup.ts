@@ -1,25 +1,6 @@
-import { strict } from "assert";
 import { useState } from "react";
 import toast from "react-hot-toast";
-
-interface iStud  {
-  studentName:string;
-  email:string;
-  password:string;
-  subject:string;
-  semester:string;
-  admissionYear:string;
-  gender:string;
-}
-
-interface iTeach {
-  teacherName:string;
-  email:string;
-  password:string;
-  subject:string;
-  joiningYear:string;
-  gender:string;
-}
+import { iStud , iTeach } from "../interfaces/user";
 
 export const useStudSignup = () => {
   const [loading, setLoading] = useState(false);

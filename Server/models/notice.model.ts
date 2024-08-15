@@ -8,7 +8,6 @@ const noticeSchema = new mongoose.Schema({
   noticeCreatedby: {
     type:String,
     required:true,
-    enum: ["admin","teacher"]
   },
   forSub:{
     type:String,

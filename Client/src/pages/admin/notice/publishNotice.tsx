@@ -1,16 +1,21 @@
 import { useState } from "react";
+import usePublish from "../../../hooks/useNotice";
+
 
 const PublishNotice = () => {
   const [notice,setNotice] = useState({
     noticeTitle:"",
-    noticeCreatedBy:"admin",
+    noticeCreatedby:"admin",
     forSub:"all",
     message:""
   })
 
+  const {loading,publish} = usePublish();
+
   const handleSubmit = (e:SubmitEvent) =>{
     e.preventDefault();
     console.log(notice)
+    publish(notice);
   } 
 
   return (

@@ -9,12 +9,17 @@ export const noticePublish = async (req:Request,res:Response) => {
         forSub,
         message
       } = req.body;
+
+
+    if(!noticeTitle || !noticeCreatedby || !forSub || !message){
+      return res.status(400).json({error:"Something is missing"});
+    }
     
     console.debug(noticeTitle , noticeCreatedby, forSub, message)
 
-      if(noticeCreatedby !== "admin" || noticeCreatedby !== "teacher"){
+   /*   if(noticeCreatedby != "admin" || noticeCreatedby != "teacher"){
       return res.status(400).json({error:"Who are you publishing notice?"})
-    }
+    }*/
 
       const newNotice = new Notice({
         noticeTitle , noticeCreatedby, forSub, message
