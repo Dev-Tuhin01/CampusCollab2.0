@@ -7,6 +7,7 @@ import cors from "cors";
 //importing routes
 import authRoutes from "./routes/auth.routes.ts";
 import noticeRoutes from "./routes/notice.routes.ts"
+import paperRoutes from "./routes/paper.routes.ts"
 import {connectToMongoDB} from "./db/connectToMongoDB.ts"
 
 dotenv.config();
@@ -29,7 +30,9 @@ app.use(cors({
 }))
 
 app.use("/api/auth", authRoutes);
+app.use("/api/auth", authRoutes);
 app.use("/api/notice", noticeRoutes);
+app.use("/api/paper", paperRoutes);
 
 
 app.get("/",(req:Request,res:Response)=>{
