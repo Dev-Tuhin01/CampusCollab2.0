@@ -19,7 +19,8 @@ export default {
       "retro",
       "cyberpunk",
       "valentine",
-      "nord"
+      "nord",
+      "dim"
     ]
   },
 }

@@ -15,10 +15,8 @@ const paperSchema:Schema = new mongoose.Schema({
     ref:"Teacher",
     required:true
   },
-  sub:[{
-    subject: {type: String, required:true},
-    Semester: {type:String, required:true}
-  }],
+  subjects: [{type: String, required:true}],
+  semester: {type:String, required:true},
   isMinor: {
     type:Boolean,
     required:true

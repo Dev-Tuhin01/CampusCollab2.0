@@ -2,6 +2,9 @@ export interface iPaper {
   paperCode: string;
   paperName: string;
   teacherID: string;
-  subjects: string[];
+  sub: [{
+    subject:string,
+    semester:string
+  } ];
   isMinor: boolean;
 }

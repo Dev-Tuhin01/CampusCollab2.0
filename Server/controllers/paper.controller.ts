@@ -10,6 +10,7 @@ export const addPaper = async (req:Request, res:Response) => {
       paperName,
       teacherID,
       subjects,
+      semester,
       isMinor
     } = req.body;
 
@@ -23,18 +24,20 @@ export const addPaper = async (req:Request, res:Response) => {
     }
     
     const id = teacher._id;
+    console.debug(id);
 
     const newPaper = new Paper({
       paperCode,
       paperName,
-      teacherID:id,
+      teacher:id,
       subjects,
+      semester,
       isMinor
     });
 
     if(newPaper){
       await newPaper.save();
-      res.send(200).json({
+      res.status(200).json({
         _id: newPaper._id,
         paperCode: newPaper.paperCode
       }) 
