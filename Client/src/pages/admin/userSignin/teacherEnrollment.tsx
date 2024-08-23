@@ -84,7 +84,7 @@ const TeacherEnroll = ()=>{
           </label>
       </label>
       <div className="divider" />
-      <button type="submit" className="btn btn-secondary">Submit</button>
+      <button type="submit" className="btn btn-secondary" disabled={loading}>Submit</button>
       <button type="reset" className=" m-2 btn btn-neutral">Cancel</button>
     </form>
   </div>

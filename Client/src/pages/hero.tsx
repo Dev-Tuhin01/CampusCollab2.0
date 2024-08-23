@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import QRCode from "react-qr-code";
 
 const hero = () => {
   return (
@@ -74,6 +75,17 @@ const hero = () => {
             <div className="w-28 rounded-full">
               <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.nbhS7478CTrHOJ3BEbQYLQHaC-%26pid%3DApi&f=1&ipt=dcd818387ae77fc715687aa17290e88154489d4982ce8a34158ed2aa23acddff&ipo=images" />
             </div>
+          </div>
+        </div>
+      </div>
+      <div className="min-h-screen w-full bg-base-100 flex items-center justify-center">
+        <div className="min-h-96 items-center justify-center rounded-xl m-10 bg-neutral bg-opacity-90 flex">
+          <div className="h-full w-1/2 text-6xl">
+            Click here to visit our website: <a href="https://youtu.be/mcYLzu_1cNc?si=na2AK-q82GKpE9Cnhttps://youtu.be/mcYLzu_1cNc?si=na2AK-q82GKpE9Cn" className="text-accent">here</a>
+          </div>
+          <div className="divider divider-horizontal">or</div>
+          <div className="">
+            <QRCode value="https://youtu.be/mcYLzu_1cNc?si=na2AK-q82GKpE9Cn" />
           </div>
         </div>
       </div>

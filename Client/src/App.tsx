@@ -8,6 +8,9 @@ import PublishNotice from './pages/admin/notice/publishNotice'
 import AddPaper from './pages/admin/papers/addPaper'
 import { Toaster } from 'react-hot-toast'
 import Hero from './pages/hero'
+import Application from './pages/ user/App'
+import TeachLogin from './pages/ user/login/teachLogin'
+import StudLogin from './pages/ user/login/studLogin'
 
 function App() {
 
@@ -23,10 +26,14 @@ function App() {
           <Route path='publishNotice' element={<PublishNotice />}/>
           <Route path='addPaper' element={<AddPaper />}/>
         </Route>
-        <Route path='app'>
-          <Route index />
-          <Route path='Notice' />
-          <Route path='About' />
+        <Route path='app' element={<Application />}>
+          <Route path='login'>
+            <Route path='teacher' element={<TeachLogin />} />
+            <Route path='student' element={<StudLogin />} />
+          </Route>
+          <Route path='chat'/>
+          <Route path='notice' />
+          <Route path='about' />
         </Route>
       </Routes>
     </>
