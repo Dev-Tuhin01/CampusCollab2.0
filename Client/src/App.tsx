@@ -11,6 +11,7 @@ import Hero from './pages/hero'
 import Application from './pages/ user/App'
 import TeachLogin from './pages/ user/login/teachLogin'
 import StudLogin from './pages/ user/login/studLogin'
+import Login from './pages/ user/login/login'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
         </Route>
         <Route path='app' element={<Application />}>
           <Route path='login'>
+            <Route index element={<Login />} />
             <Route path='teacher' element={<TeachLogin />} />
             <Route path='student' element={<StudLogin />} />
           </Route>
