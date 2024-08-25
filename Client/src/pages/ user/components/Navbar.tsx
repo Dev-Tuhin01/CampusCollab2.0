@@ -9,7 +9,7 @@ const Navbar = () => {
   const route = location.pathname.toString();
 
   return (
-    <div className={route === "/app/chat" || route === "/app/notice" || route === "/app/about"?"btm-nav bg-neutral":"hidden"}>
+    <div className={route === "/app/chat" || route === "/app/notice" || route === "/app/about" || route==="/app"?"btm-nav bg-neutral":"hidden"}>
       <Link to={"chat"} className={route ==="/app/chat"?"active":""}>
       <button>
         <ChatIcon />

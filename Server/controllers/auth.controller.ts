@@ -7,6 +7,7 @@ import { Teacher, Student } from "../models/user.model";
 export const studLogin = async (req:Request,res:Response)=>{
   try {
     const {rollNo, password} = req.body;
+    console.debug(rollNo,password)
     const student = await Student.findOne({rollNo});
     const isValidPassword = await bcrypt.compare(password, student?.password || "");
 

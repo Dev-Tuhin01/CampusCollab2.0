@@ -1,4 +1,21 @@
+import { useState } from "react";
+import { useTeachLogin } from "../../../hooks/useLogin";
+import { HourglassBottom } from "@mui/icons-material";
+
 const TeachLogin = () => {
+  
+  const [data,setData] = useState({
+    teacherID:"",
+    password:""
+  })
+
+  const {loading,login} = useTeachLogin()
+
+  const handleSubmit = (e:SubmitEvent) =>{
+    e.preventDefault();
+    login(data.teacherID,data.password)
+  }
+
   return (
     <div className="flex flex-col min-h-screen justify-center items-center m-5">
       <form className="h-full md:w-8/12 w-11/12 border p-4 rounded-2xl bg-neutral">
@@ -11,17 +28,17 @@ const TeachLogin = () => {
           <div className="label">
             <span className="label-text"> Enter your Teacher ID</span>
           </div>
-          <input type="text" className="input bordered" placeholder="CIS03SK01" />
+          <input type="text" className="input bordered" value={data.teacherID} onChange={(e)=>{setData({...data,teacherID:e.target.value})}} placeholder="CIS03SK01" />
         </label>
         <label className="form-control">
           <div className="label">
-            <span className="label-text"> Enter your Teacher Email</span>
+            <span className="label-text"> Enter your Password</span>
           </div>
-          <input type="email" className="input bordered" placeholder="SK@CIS.com" />
+          <input type="password" className="input bordered" value={data.password} onChange={(e)=>{setData({...data,teacherID:e.target.value})}}  placeholder="abcd1234" />
         </label>
 
         <div className="divider" />
-        <button type="submit" className="btn btn-secondary">Submit</button>
+        <button type="submit" className="btn btn-secondary" onClick={handleSubmit}>{loading?<HourglassBottom />:"Submit"}</button>
         <button type="reset" className="m-2 btn btn-neutral">Cancel</button>
       </form>
     </div>

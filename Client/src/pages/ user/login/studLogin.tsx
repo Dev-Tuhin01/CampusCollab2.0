@@ -1,14 +1,19 @@
 import { useState } from "react";
+import { useStudLogin } from "../../../hooks/useLogin";
+import { HourglassBottom } from "@mui/icons-material";
 
 const StudLogin = () => {
   const [data,setData] = useState({
-    "studentName":"",
+    "rollNo":"",
     "password":""
   })
+
+  const {loading,login} = useStudLogin()
 
   const handleSubmit = (e:SubmitEvent) => {
     e.preventDefault()
     console.table(data)
+    login(data.rollNo,data.password);
   }
 
   return (
@@ -23,7 +28,7 @@ const StudLogin = () => {
           <div className="label">
             <span className="label-text"> Enter your Roll no</span>
           </div>
-          <input type="text" className="input bordered" value={data.studentName} placeholder="BCA2100001" onChange={(e)=>{setData({...data,studentName:e.target.value})}} />
+          <input type="text" className="input bordered" value={data.rollNo} placeholder="BCA2100001" onChange={(e)=>{setData({...data,rollNo:e.target.value})}} />
         </label>
         <label className="form-control">
           <div className="label">
@@ -33,7 +38,7 @@ const StudLogin = () => {
         </label>
 
         <div className="divider" />
-        <button type="submit" className="btn btn-secondary" onClick={handleSubmit}>Submit</button>
+        <button type="submit" className="btn btn-secondary" onClick={handleSubmit}>{loading?<HourglassBottom /> : "Submit"} </button>
         <button type="reset" className="m-2 btn btn-neutral">Cancel</button>
       </form>
     </div>
