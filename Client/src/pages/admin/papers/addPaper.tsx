@@ -106,7 +106,7 @@ const AddPaper =  () => {
           </label>
         </div>
         <div className="divider" />
-        <button type="submit" className="btn btn-primary" disabled={loading1}>Submit</button>
+        <button type="submit" className="btn btn-primary" disabled={loading}>Submit</button>
         <button type="reset" className="btn btn-neutral m-2">Reset</button>
       </form>
     </div>

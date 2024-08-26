@@ -1,8 +1,10 @@
 import { useState } from "react"
 import toast from "react-hot-toast";
+import { useAuthContext } from "../context/authContext";
 
 export const useStudLogin = () =>{
   const [loading,setLoading] = useState(false);
+  const {setAuthUser} = useAuthContext();
 
   
   const login = async (rollNo:string , password:string) =>{
@@ -29,7 +31,10 @@ export const useStudLogin = () =>{
       //storing data in local storage and then creating a context shared across the app
       data.user = "student";
       console.log(data)
-      //localStorage.setItem("app-user",JSON.stringify(data));
+      localStorage.setItem("app-user",JSON.stringify(data));
+      setAuthUser(data);
+      
+      
     } catch(error) {
       toast.error((error as Error).message);
       console.error((error as Error).message);
@@ -54,6 +59,7 @@ function studValidate(rollNo: string, password: string) {
 }
 export const useTeachLogin = () =>{
   const [loading,setLoading] = useState(false);
+  const {setAuthUser} = useAuthContext();
   
   const login = async (teacherId:string , password:string) =>{
     const success = teachValidate(teacherId,password)
@@ -76,6 +82,8 @@ export const useTeachLogin = () =>{
       //storing data in local storage and then creating a context shared across the app
       data.user = "teacher";
       localStorage.setItem("app-user",JSON.stringify(data));
+      setAuthUser(data);
+
     } catch(error) {
       toast.error((error as Error).message);
       console.error((error as Error).message);

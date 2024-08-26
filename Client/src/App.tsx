@@ -12,6 +12,7 @@ import Application from './pages/ user/App'
 import TeachLogin from './pages/ user/login/teachLogin'
 import StudLogin from './pages/ user/login/studLogin'
 import Login from './pages/ user/login/login'
+import { AuthContextProvider } from './context/authContext'
 
 function App() {
 
@@ -27,7 +28,7 @@ function App() {
           <Route path='publishNotice' element={<PublishNotice />}/>
           <Route path='addPaper' element={<AddPaper />}/>
         </Route>
-        <Route path='app' element={<Application />}>
+        <Route path='app' element={<AuthContextProvider><Application /></AuthContextProvider>}>
           <Route path='login'>
             <Route index element={<Login />} />
             <Route path='teacher' element={<TeachLogin />} />
