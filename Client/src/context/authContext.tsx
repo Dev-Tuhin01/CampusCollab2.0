@@ -1,6 +1,12 @@
-import {  createContext, useContext, useState} from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, {  createContext, useContext, useState} from "react";
 
-export const AuthContext = createContext();
+interface iAuthContext{
+  authUser: any;
+  setAuthUser: React.Dispatch<React.SetStateAction<any>>;
+}
+
+export const AuthContext = createContext<iAuthContext |undefined>(undefined);
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const useAuthContext = () =>{

@@ -11,7 +11,7 @@ const hero = () => {
           <div className="divider" />
           <p className="text-xl w-full text-center">Your one stop solltion for all your problems regarding communtication <br /> Let's begin our tour of the app </p>
           <div className="w-full flex flex-row justify-around m-2">
-          <Link to={"app"} className="w-5/12 h-32 "><div className="btn w-full h-full btn-warning glass text-xl font-bold">App</div></Link>
+          <Link to={"app/chat"} className="w-5/12 h-32 "><div className="btn w-full h-full btn-warning glass text-xl font-bold">App</div></Link>
           <Link to={"admin"} className="w-5/12 h-32"><div className="btn w-full h-full btn-error glass text-xl font-bold">Admin</div></Link>
           
           </div>

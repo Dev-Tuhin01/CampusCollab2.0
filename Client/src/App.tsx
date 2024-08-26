@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router'
+import { Navigate, Route, Routes } from 'react-router'
 import './App.css'
 import AdminPanel from './pages/admin/admin'
 import Landing from './pages/admin/main/landing'
@@ -12,10 +12,12 @@ import Application from './pages/ user/App'
 import TeachLogin from './pages/ user/login/teachLogin'
 import StudLogin from './pages/ user/login/studLogin'
 import Login from './pages/ user/login/login'
-import { AuthContextProvider } from './context/authContext'
+import {  useAuthContext } from './context/authContext'
+import About from './pages/ user/about/About'
 
 function App() {
-
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const {authUser} = useAuthContext();
   return (
     <>
       <Toaster position='top-right' reverseOrder={false} />
@@ -28,15 +30,15 @@ function App() {
           <Route path='publishNotice' element={<PublishNotice />}/>
           <Route path='addPaper' element={<AddPaper />}/>
         </Route>
-        <Route path='app' element={<AuthContextProvider><Application /></AuthContextProvider>}>
+        <Route path='app' element={<Application />}>
           <Route path='login'>
-            <Route index element={<Login />} />
-            <Route path='teacher' element={<TeachLogin />} />
-            <Route path='student' element={<StudLogin />} />
+            <Route index element={authUser?<Navigate to={"/app/chat"} />:<Login />} />
+            <Route path='teacher' element={authUser?<Navigate to={"/app/chat"} />:<TeachLogin />} />
+            <Route path='student' element={authUser?<Navigate to={"/app/chat"} />:<StudLogin />} />
           </Route>
-          <Route path='chat'/>
-          <Route path='notice' />
-          <Route path='about' />
+          <Route path='chat' element={authUser?<h1>Chat</h1>:<Navigate to={"/app/login"} />}/>
+          <Route path='notice' element={authUser?<h1>notice</h1>:<Navigate to={"/app/login"} />} />
+          <Route path='about' element={authUser?<About />:<Navigate to={"/app/login"} />}/>
         </Route>
       </Routes>
     </>
