@@ -9,7 +9,6 @@ const Navbar = () => {
   const location = useLocation();
   const route = location.pathname.toString();
   const {authUser} = useAuthContext()
-  console.log(authUser.profilePic)
 
   return (
     <div className={route === "/app/chat" || route === "/app/notice" || route === "/app/about" || route==="/app"?"btm-nav bg-neutral":"hidden"}>
@@ -25,7 +24,7 @@ const Navbar = () => {
       </Link>
       <Link to={"about"} className={route ==="/app/about"?"active":""}>
         <button>
-          {authUser?<img src={authUser.profilePic} className='w-10 border border-primary rounded-3xl' alt="" />:<AccountCircleIcon />}
+          {authUser?<img src={authUser?.profilePic} className='w-10 border border-primary rounded-3xl' alt="" />:<AccountCircleIcon />}
         </button>
       </Link>
     </div>
