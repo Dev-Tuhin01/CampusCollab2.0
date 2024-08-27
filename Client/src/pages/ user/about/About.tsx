@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { useAuthContext } from "../../../context/authContext";
 import useGetStudent from "../../../hooks/useGetStudent";
+import { Logout } from "@mui/icons-material";
+import useLogout from "../../../hooks/useLogout";
 
 const About = () =>{
   const [stud,getStud] = useState()
   const {authUser} = useAuthContext();
   const {loading,getStudent} = useGetStudent();
+  const {logout} = useLogout();
   console.log(authUser._id)
   useEffect(()=>{
     const getter = async () =>{
@@ -15,7 +18,7 @@ const About = () =>{
   },[])
 
   return (
-  <div className="min-h-full w-full bg-background-primary overflow-auto flex grow items-center justify-center">
+  <div className="min-h-full w-full bg-background-primary overflow-auto flex flex-col grow items-center justify-center">
     <div className="bg-background-secondary border-Accent text-sm sm:text-xl w-fit rounded-md m-2 border-2 h-fit p-2 align-top flex-wrap flex">
       <div className="avatar">
         <div className="rounded-xl w-36 h-36">
@@ -52,6 +55,7 @@ const About = () =>{
           </table>
         </div>
       </div>
+      <button className="rounded-full bg-neutral size-10" onClick={logout}><Logout /> </button>
     </div>
 
   )

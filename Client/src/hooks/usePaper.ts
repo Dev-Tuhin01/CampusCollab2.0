@@ -12,6 +12,7 @@ export const usePaper = () =>{
     if(!success) return;
 
     try{
+      setLoading(true);
       const res = await fetch("http://localhost:5000/api/paper/add/",{
         method:"POST",
         headers: {"Content-Type": "application/json"},
