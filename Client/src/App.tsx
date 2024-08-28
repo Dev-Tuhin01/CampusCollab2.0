@@ -15,6 +15,8 @@ import Login from './pages/ user/login/login'
 import {  useAuthContext } from './context/authContext'
 import About from './pages/ user/about/About'
 import Notices from './pages/ user/notice/notices'
+import CreateNotice from './pages/ user/notice/createNotice'
+import NoticeMeassage from './pages/ user/notice/noticeMessage'
 
 function App() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -38,7 +40,11 @@ function App() {
             <Route path='student' element={authUser?<Navigate to={"/app/chat"} />:<StudLogin />} />
           </Route>
           <Route path='chat' element={authUser?<h1>Chat</h1>:<Navigate to={"/app/login"} />}/>
-        <Route path='notice' element={authUser?<Notices />:<Navigate to={"/app/login"} />} />
+        <Route path='notice' >
+            <Route index  element={authUser? <Notices />:<Navigate to={"/app/login"} />} />
+          <Route path='createnotice' element={<CreateNotice />} />
+          <Route path='{:id}' element={<NoticeMeassage />}/>
+        </Route>
           <Route path='about' element={authUser?<About />:<Navigate to={"/app/login"} />}/>
         </Route>
       </Routes>

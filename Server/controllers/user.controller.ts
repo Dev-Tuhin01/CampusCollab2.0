@@ -27,7 +27,7 @@ export const getStudent = async (req:Request,res:Response)=>{
 
 export const getOneTeacher = async (req:Request, res:Response) => {
   const {id} = req.body;
-  console.log(id);
+  console.log(id ,req.body);
 
   const data = await Teacher.findById({_id:id});
 

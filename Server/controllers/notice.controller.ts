@@ -1,5 +1,6 @@
 import Notice from "../models/notice.model";
 import { Response, Request } from "express";
+import { Student } from "../models/user.model";
 
 export const noticePublish = async (req:Request,res:Response) => {
   
@@ -44,8 +45,13 @@ export const noticePublish = async (req:Request,res:Response) => {
 }
 
 export const noticeRead = async (req:Request,res:Response) =>{
-  try {
-    const {subject} = req.body;
+  console.log("working",req)
+
+ try {
+    const {_id} = req.body;
+
+    const stud = await Student.findById({_id});
+    const subject = stud?.subject;
     
     const data = await Notice.find({ forSub: {$in: [subject, "all"]}})
     console.log(data);

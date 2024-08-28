@@ -89,14 +89,14 @@ const AddPaper = ()=>{
 
         <label className="form-control">
           <div className="label">
-            <div className="label-text">Select Teacher</div>
+            <div className="label-text">Select Subject</div>
           </div>
             <select className="select w-7/12" multiple={data.isMinor} value={data.isMinor ? data.subjects:data.subjects[0]} onChange={handleChange}>
               <option selected disabled>Select multiple subject(use shift to select multiple)</option>
               <option value="BCA">BCA</option>
               <option value="Bsc CS">Bsc CS</option>
               <option value="Msc CIS">Msc CIS</option>
-              <option value="Msc CS">Msc CIS</option>
+              <option value="Msc CS">Msc CS</option>
             </select> 
         </label>
 

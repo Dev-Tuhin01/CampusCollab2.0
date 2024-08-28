@@ -34,14 +34,16 @@ export const usePublish = () => {
      
   }
 
-  const read = async (subject:string) => {
+  const read = async (_id:string) => {
+    console.log(_id)
     try {
       const res = await fetch("http://localhost:5000/api/notice/read",{
         method:"POST",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(subject)
+        body: JSON.stringify({_id})
       })
       const data = await res.json();
+      console.log(data);
       return data;
     } catch (error) {
     toast.error((error as Error).message);

@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
+import { useNoticeContext } from "../../../context/noticeContext";
 
 const Notice =(props) =>{
 
   const {noticeTitle,noticeCreatedby,createdAt,_id} = props.notice;
   console.log(props.notice)
+  const {setNotice} = useNoticeContext()
 
   // Formatting the time from createdAt if available
   const formatTime = (date) => {
@@ -17,7 +19,7 @@ const Notice =(props) =>{
 
   return (
     <div className="w-full min-h-2 p-4 border border-black rounded-xl">
-      <Link to={_id}>
+      <Link to={_id} onClick={setNotice(props.notice)}>
       <h3 className="text-3xl">{noticeTitle}</h3>
       <div className="flex justify-between">
         <h5 className="text-xl">{noticeCreatedby}</h5>

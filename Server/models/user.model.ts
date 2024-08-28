@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const strudentSchema = new mongoose.Schema({
+const studentSchema = new mongoose.Schema({
   studentName:{
     type:String,
     required:true
@@ -44,7 +44,7 @@ const strudentSchema = new mongoose.Schema({
     timestamps:true
   });
 
-export const Student = mongoose.model("Student",strudentSchema);
+export const Student = mongoose.model("Student",studentSchema);
 
 // export default Student;
 
