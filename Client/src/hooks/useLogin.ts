@@ -61,18 +61,18 @@ export const useTeachLogin = () =>{
   const [loading,setLoading] = useState(false);
   const {setAuthUser} = useAuthContext();
   
-  const login = async (teacherId:string , password:string) =>{
-    const success = teachValidate(teacherId,password)
+  const login = async (teacherID:string , password:string) =>{
+    const success = teachValidate(teacherID,password)
     if(!success){
       return ;
     }
   
     try {
       setLoading(true)
-      const res = await fetch("http://localhost:5000/api/auth/login/student",{
+      const res = await fetch("http://localhost:5000/api/auth/login/teacher",{
         method:"POST",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({teacherId,password})
+        body: JSON.stringify({teacherID, password})
       })
       const data = await res.json();
       if(data.error){

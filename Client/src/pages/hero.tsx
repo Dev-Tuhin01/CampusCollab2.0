@@ -23,7 +23,7 @@ const hero = () => {
         <div className="flex w-full items-center justify-around">
           <div className="avatar">
             <div className="w-32 rounded-full">
-              <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngkit.com%2Fpng%2Fdetail%2F225-2254691_ifunny-watermark-png.png&f=1&nofb=1&ipt=aa105916ed5f5cc542139b576bac2f3d56123b8c887344d861f77dcd77f282fb&ipo=images" />
+              <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcodeitworld.com%2Fwp-content%2Fuploads%2F2019%2F12%2Fmonggo-db.jpg&f=1&nofb=1&ipt=0211ed9903940a2d703d7029f30efe5ee8bef51833cabc3d1e37f52e942ba4dc&ipo=images" />
             </div>
           </div>
           <div className="avatar">

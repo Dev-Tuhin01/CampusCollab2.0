@@ -1,3 +1,4 @@
+import { error } from "console";
 import { useState } from "react"
 import toast from "react-hot-toast";
 
@@ -25,7 +26,31 @@ const useGetTeachers = () =>{
     }
 
   }
-  return {loading,getTeacher};
+
+  const getOneTeacher = async (id:string) => {
+    try{
+      setLoading(true);
+      
+      const res = await fetch("http://localhost:5000/api/user/get/oneteacher",{
+        method:"POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({id})
+      });
+      const data = await res.json();
+
+      if(data.error) {
+        throw new Error(data.error);
+      }
+
+      return data;
+    } catch (e) {
+      toast.error((e as Error).message);
+      console.error((e as Error).message);
+    } finally {
+      setLoading(false);
+    }
+  }
+  return {loading,getTeacher,getOneTeacher};
 }
 
 export default useGetTeachers;

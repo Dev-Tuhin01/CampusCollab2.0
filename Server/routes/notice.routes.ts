@@ -1,9 +1,10 @@
 import express from "express";
-import { noticePublish } from "../controllers/notice.controller";
+import { noticePublish, noticeRead, noticeReadAll } from "../controllers/notice.controller";
 
 const router = express.Router();
 
 router.post("/publish",noticePublish);
-router.post("/read",);
+router.get("/readall",noticeReadAll);
+router.post("/read",noticeRead);
 
 export default router;

@@ -33,6 +33,7 @@ export const studLogin = async (req:Request,res:Response)=>{
 export const teacherLogin = async (req:Request,res:Response)=>{
   try {
     const {teacherID, password} = req.body;
+    console.table(req.body);
     const teacher= await Teacher.findOne({teacherID});
     const isValidPassword = await bcrypt.compare(password, teacher?.password || "");
 

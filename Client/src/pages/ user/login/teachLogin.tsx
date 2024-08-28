@@ -13,6 +13,7 @@ const TeachLogin = () => {
 
   const handleSubmit = (e:SubmitEvent) =>{
     e.preventDefault();
+    console.log(data);
     login(data.teacherID,data.password)
   }
 
@@ -34,7 +35,7 @@ const TeachLogin = () => {
           <div className="label">
             <span className="label-text"> Enter your Password</span>
           </div>
-          <input type="password" className="input bordered" value={data.password} onChange={(e)=>{setData({...data,teacherID:e.target.value})}}  placeholder="abcd1234" />
+          <input type="password" className="input bordered" value={data.password} onChange={(e)=>{setData({...data,password:e.target.value})}}  placeholder="abcd1234" />
         </label>
 
         <div className="divider" />

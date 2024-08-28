@@ -43,3 +43,27 @@ export const noticePublish = async (req:Request,res:Response) => {
   }
 }
 
+export const noticeRead = async (req:Request,res:Response) =>{
+  try {
+    const {subject} = req.body;
+    
+    const data = await Notice.find({ forSub: {$in: [subject, "all"]}})
+    console.table(data);
+    res.status(200).json(data);
+  } catch (error) {
+    console.error((error as Error).message);
+    res.status(500).json({error:"Something is cooked in our machines"});
+  }
+}
+
+export const noticeReadAll = async (req:Request,res:Response) =>{
+  try {
+    const data = await Notice.find();
+    console.table(data);
+    res.status(200).json(data);
+  } catch (error) {
+    console.error((error as Error).message);
+    res.status(500).json({error:"Something is cooked in our machines"});
+  }
+
+}

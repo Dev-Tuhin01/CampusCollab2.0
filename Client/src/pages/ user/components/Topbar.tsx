@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom"
+
 const Topabar = () => {
   return (
     <div className="navbar bg-neutral">
-      <a className="btn btn-ghost text-xl">CampusCollab</a>
+      <Link className="btn btn-ghost text-xl" to="/">CampusCollab</Link>
     </div>
   )
 }
