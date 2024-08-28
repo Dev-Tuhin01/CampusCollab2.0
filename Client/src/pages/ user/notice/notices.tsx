@@ -4,15 +4,24 @@ import Notice from "./notice";
 import { Create } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import useNotice from "../../../hooks/useNotice"
+import useGetStudent from "../../../hooks/useGetStudent";
 
 const Notices = () =>{
+  const [stud,setStud] = useState()
   const {authUser} = useAuthContext();
   const [notices, setNotices] = useState([]);
+  const {getStudent} = useGetStudent();
   const {read , readall} = useNotice()
 
   useEffect(()=>{
     const getter = async ()=>{
-      setNotices(await readall())
+      console.log(authUser.user)
+      if(authUser.user ==="teacher"){
+        setNotices(await readall())
+      }else {
+        setStud(await getStudent(authUser._id))
+        read(stud?.subject)
+      }
     }
     getter()
     console.log(notices , notices.length);
