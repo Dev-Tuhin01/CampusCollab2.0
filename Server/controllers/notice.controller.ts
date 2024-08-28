@@ -48,7 +48,7 @@ export const noticeRead = async (req:Request,res:Response) =>{
     const {subject} = req.body;
     
     const data = await Notice.find({ forSub: {$in: [subject, "all"]}})
-    console.table(data);
+    console.log(data);
     res.status(200).json(data);
   } catch (error) {
     console.error((error as Error).message);
@@ -59,7 +59,7 @@ export const noticeRead = async (req:Request,res:Response) =>{
 export const noticeReadAll = async (req:Request,res:Response) =>{
   try {
     const data = await Notice.find();
-    console.table(data);
+    console.log(data);
     res.status(200).json(data);
   } catch (error) {
     console.error((error as Error).message);
