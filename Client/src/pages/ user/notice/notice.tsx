@@ -28,9 +28,10 @@ const Notice =(props) =>{
         </div>
       </div>
       <dialog id={_id} className="modal">
-  <div className="modal-box">
-    <h3 className="font-bold text-lg">{noticeTitle}</h3>
-    <p className="py-4">{message} </p>
+  <div className="modal-box flex flex-col items-center">
+    <h3 className="font-bold text-4xl text-primary">{noticeTitle}</h3>
+    <div className="divider" />
+    <p className="py-4 text-xl text-success text-pretty">{message} </p>
     <div className="modal-action">
       <form method="dialog">
         {/* if there is a button in form, it will close the modal */}
