@@ -9,6 +9,8 @@ import authRoutes from "./routes/auth.routes.ts";
 import noticeRoutes from "./routes/notice.routes.ts"
 import paperRoutes from "./routes/paper.routes.ts"
 import userRoutes from "./routes/user.routes.ts"
+import messageRoutes from "./routes/message.routes.ts";
+import conversationRoutes from "./routes/conversation.routes.ts";
 import {connectToMongoDB} from "./db/connectToMongoDB.ts"
 
 dotenv.config();
@@ -34,6 +36,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/notice", noticeRoutes);
 app.use("/api/paper", paperRoutes);
+app.use("/api/message", messageRoutes);
+app.use("/api/conversation", conversationRoutes);
 
 
 app.get("/",(req:Request,res:Response)=>{

@@ -8,7 +8,13 @@ const messageSchema = new mongoose.Schema({
   },
   senderId:{
     type:mongoose.Schema.Types.ObjectId,
-    required:true
+    required:true,
+    refPath:'senderModel'
+  },
+  senderModel:{
+    type:String,
+    required:true,
+    enum:["Teacher","Student"]
   },
   conversationId:{
     type:mongoose.Schema.Types.ObjectId,
@@ -21,6 +27,6 @@ const messageSchema = new mongoose.Schema({
   }
 },{ timestamps:true});
 
-const message = mongoose.model("Message",messageSchema);
+const Message = mongoose.model("Message",messageSchema);
 
-export default message;
+export default Message;

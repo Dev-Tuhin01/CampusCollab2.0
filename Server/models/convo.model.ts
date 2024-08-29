@@ -9,7 +9,7 @@ const conversationSchema:Schema = new mongoose.Schema({
     type:mongoose.Schema.Types.ObjectId,
     ref:'Student',
     }],
-  teahcerParticipants : {
+  teacherParticipants : {
     type:mongoose.Schema.Types.ObjectId,
     ref:'Teacher',
   },
