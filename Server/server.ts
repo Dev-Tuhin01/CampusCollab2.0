@@ -71,7 +71,7 @@ app.get("/",(req:Request,res:Response)=>{
 
 
 
-app.listen(port,()=>{
+server.listen(port,()=>{
   connectToMongoDB();
   console.log(`App is running on port:${port} started running on ${timestamp}`);
 });
