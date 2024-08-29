@@ -8,7 +8,7 @@ export const getConversation =async (req:Request,res:Response) =>{
 
   const conversations = await Conversation.find({
     studentParticipants: {$in : _id}
-  }).populate('convoFor Messages');
+  }).populate('convoFor studentParticipants teacherParticipants Messages');
   
   res.status(200).json(conversations);
 }
@@ -18,7 +18,7 @@ export const getConversationForTeachers =async (req:Request,res:Response) =>{
 
   const conversations =await Conversation.find({
     teacherParticipants: _id
-  })
+  }).populate('convoFor studentParticipants teacherParticipants Messages');
   
   res.status(200).json(conversations);
 }

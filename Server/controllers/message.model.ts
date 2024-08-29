@@ -5,7 +5,8 @@ import Conversation from "../models/convo.model";
 
 export const readMessage = async (req:Request, res:Response) =>{
    try {
-    const messages = await Message.find({ conversationId: req.params.conversationId });
+    const messages = await Message.find({ conversationId: req.params.id }).populate('senderId');
+    console.log(messages);
     res.json(messages);
   } catch (err) {
     res.status(500).json({ message: (err as Error).message });
